@@ -19,7 +19,7 @@ input{
     background-color: rgba(0, 0, 0, 0.02);
     border:none;
     width:45px;
-    margin-top:10px;
+    margin-top:20px;
     font-size:2.5rem;
     padding:3px;
     color:#ea00ff;
@@ -89,7 +89,7 @@ header {
 }
 
 .main text{
-    z-index: 100;
+    z-index: 2;
     position: absolute;
     color: white;
     font-size: 3rem;
@@ -120,7 +120,7 @@ header {
     top:40%;
     line-height: 10%;
     width:100%;
-    z-index: 100;
+    z-index: 10000;
     font-size: 5rem;
     background: linear-gradient(-45deg,#8f6B29, #ffd664, #a8a8a8);
     animation: glowing-border 0.5s infinite, gradient 2s infinite;
@@ -129,11 +129,21 @@ header {
 
                                                 /* Sidebars start here */
 
-.sidebar{
+
+#sidebar-wrapper{
     background-color: rgba(0, 0, 255, 0.1);
+    width:6.3%;
+    padding: 15px;
+    left:92.5%;
+    position:absolute;
+    height: 10000px; 
+    bottom: -110%; /*messy but works -- fixed pos breaks #winner */
+}
+
+.sidebar{
     padding:15px;
     width:6.3%;
-    left:91.5%;
+    left:92.5%;
     position:fixed;
     font-weight: 700;
     animation: glowing-text 20s infinite;
@@ -142,14 +152,14 @@ header {
 #players{
     color:#ea00ff;
     text-align: center;
-    font-size:1.5rem;
-    bottom:87.5%;
-    padding-top:5px;
+    font-size:2rem;
+    bottom:86.5%;
 }
 
 #votes{
-    font-size: 1.5rem;
+    font-size: 2rem;
     height: 530px;
+    bottom: 30%;
 }
 
 #votecount{
@@ -163,7 +173,7 @@ header {
 }
 
 #votecount :nth-child(n+1){
-    animation: glowing-border-small 5s infinite;
+    animation: glowing-border-small 2s infinite;
 }
 
 /* For different colors in #votecount*/
@@ -196,12 +206,12 @@ p:nth-child(9){
 }
 
 /* Cheap trick to reduce risk of overflow */
-p:nth-child(n+10){ 
+p:nth-child(n+12){ 
     display:none;
 }
 
 #functions{
-    bottom:1%;
+    bottom:-8%;
     height:240px;
     font-size: 20px;
 }
@@ -209,17 +219,12 @@ p:nth-child(n+10){
     animation: grow 1s, glowing-text 20s infinite;
     cursor: pointer;
 }
-#function span:hover {
-    animation: grow 1s, glowing-text 20s infinite;
-    cursor: pointer;
-}
 
 #random{
     font-size: 1.2rem;
-    height:120px;
+    height:90px;
     cursor:pointer;
     color:rgb(72, 197, 255);
-    bottom:13%;
 }
 
 #randomOutput {
@@ -416,11 +421,19 @@ p:nth-child(n+10){
     }
 }
 
+.sidebar, #sidebar-wrapper{
+    width: 10%;
+    left: 85%;    
+}
+
 /* Media queries start here. They don't all look perfect, but keep the website functional. */
 
 @media only screen and (max-width: 700px) {
     h1,.sidebar, #functions {
         font-size: 80%;
+    }
+    #functions div, #votes, #players{
+        font-size: 100%;
     }
     #winner p {
         font-size: 1.2rem;
@@ -428,34 +441,40 @@ p:nth-child(n+10){
     .main{
         width: 300px;
     }
-    .sidebar{
-        width: 10%;
-        left: 85%;
+    .sidebar, #sidebar-wrapper{
+        width: 15%;
+        left: 80%;
+        background-color: none;    
     }
+
 }
 
 @media only screen and (min-width: 950px) {
     #content{
         grid-template-columns: repeat(2, 1fr);
-    }    
+    }
+    .sidebar, #sidebar-wrapper{
+        width: 10%;
+        left: 87%;
+    }
 }
 
 @media only screen and (min-width: 1400px) {
     #content{
         grid-template-columns: repeat(3, 1fr);
     }
+    .sidebar, #sidebar-wrapper{
+        width: 8%;
+        left: 90%;    
+    }    
 }
 
 @media only screen and (min-width: 1700px) {
     #content{
         grid-template-columns: repeat(4, 1fr);
     }
-}
-
-#test {
-    z-index:-10;
-    font-size: 500%;
-}
-#test p{
-    font-size: 500%;
+    .sidebar, #sidebar-wrapper{
+        width: 8%;
+        left: 91%;    
+    }    
 }

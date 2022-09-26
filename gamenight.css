@@ -51,7 +51,7 @@ header {
     outline:rgb(42, 223, 255);
 }
 
-/* #Content is the wrapper for all the game objects, and all the items are marked with .main. Bad naming. */
+/* #Content is the wrapper for all the game objects, and all the items are marked with .object. */
 
 #content {
     display: grid;
@@ -63,7 +63,7 @@ header {
     max-width:90%;
 }
 
-.main{
+.object{
     font-weight: 700;
     font-size:2rem;
     width: 410px;
@@ -81,14 +81,14 @@ header {
     animation: glowing 5s infinite, fadein 1s;
 }
 
-.main:hover{
+.object:hover{
     animation: wiggle 2s, glowing 2s infinite, fadein 0s; /* fadein 0s prevents fadein from running after wiggle */
 }
-.main:active{
+.object:active{
     animation: pulse 0.5s, fadein 0s; /* fadein 0s prevents fadein from running after wiggle */;
 }
 
-.main text{
+.object text{
     z-index: 2;
     position: absolute;
     color: white;
@@ -438,7 +438,7 @@ p:nth-child(n+12){
     #winner p {
         font-size: 1.2rem;
     }
-    .main{
+    .object{
         width: 300px;
     }
     .sidebar, #sidebar-wrapper{

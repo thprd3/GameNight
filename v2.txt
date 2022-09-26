@@ -1,0 +1,16 @@
+a la øyedrops
+* Dynamisk skalere 1-3 kolonner
+* Bruke plassen - lite tomrom
+* 
+
+pop-up input
+* dim background
+* simple and clean input bars
+
+item
+* hover: dim, appear: title 
+* custom banners
+
+header
+* info
+* starts top, becomes sticky to top of content

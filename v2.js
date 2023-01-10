@@ -1,11 +1,11 @@
 // Player and voting functions
-let voteTotal ="";
+let voteTotal = "";
 
 // Game class
 class Game {
-    constructor (name){ ;
-        this.name=name;
-        this.image="images/"+name+".jpg";
+    constructor (name){
+        this.name = name;
+        this.image = "images/"+name+".jpg";
     }
 }
 

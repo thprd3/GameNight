@@ -131,7 +131,7 @@ function dynamicSort(property) {
 }
 
 // Binds sort and shuffle functions to buttons
-document.getElementById("shuffleBtn").addEventListener("click", function () {
+document.getElementById("shuffleBtn").addEve ntListener("click", function () {
     document.getElementById("content").innerHTML = "";
     shuffle(games);
     generate();

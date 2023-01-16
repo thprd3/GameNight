@@ -3,9 +3,9 @@ let voteTotal = "";
 
 // Game class
 class Game {
-    constructor (name){
+    constructor (name) {
         this.name = name;
-        this.image = "images/"+name+".jpg";
+        this.image = "images/" + name + ".jpg";
     }
 }
 

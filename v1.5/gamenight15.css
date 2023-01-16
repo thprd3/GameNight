@@ -1,0 +1,139 @@
+:root {
+    background: linear-gradient(-45deg, #ee52ee, #6f3ce7, #2ac1f8, #d52349);
+    background-size: 400% 400%;
+    font-family: 'Raleway', sans-serif;
+    box-sizing: border-box;
+    text-align: center;
+    user-select: none;
+}
+
+:root::-webkit-scrollbar {
+    display: none;
+}
+
+#wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+#sidebar-wrapper {
+    text-align: center;
+    background-color: rgba(0, 0, 255, 0.1);
+    font-size: 120%;
+    max-width: 150px;
+}
+
+#content {
+    flex-basis: 75%;
+    width: 85%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: auto;
+    grid-column-gap: 15px;
+    grid-row-gap: 20px;
+}
+
+.object {
+    width: 200px;
+    height: 100px;
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+    font-size: 600%;
+    line-height: 25px;
+    animation: color-change 3s infinite;
+}
+
+input {
+    background-color: rgba(0, 0, 0, 0.02);
+    border: none;
+    width: 45px;
+    margin-top: 20px;
+    font-size: 2.5rem;
+    padding: 3px;
+    color: #ea00ff;
+    font-weight: 600;
+    border-radius: 100%;
+    text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+hr {
+    border: 1px solid rgba(0, 0, 0, 0.2)
+}
+
+/* Animations start here */
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes color-change {
+    0% {
+        color: #0084ff;
+        text-shadow: 10px 10px #ff00f2;
+    }
+
+    50% {
+        color: #ff00f2;
+        text-shadow: 10px 10px #0084ff;
+    }
+
+    100% {
+        color: #0084ff;
+        text-shadow: 10px 10px #ff00f2;
+    }
+}
+
+/* Media queries */
+
+@media only screen and (min-width: 500px) {
+    #content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (min-width: 970px) {
+    #content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .object {
+        width: 400px;
+        height: 200px;
+    }
+}
+
+@media only screen and (min-width: 1450px) {
+    #content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .object {
+        width: 400px;
+        height: 200px;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    #content {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .object {
+        width: 400px;
+        height: 200px;
+    }
+}

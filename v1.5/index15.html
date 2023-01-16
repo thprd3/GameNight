@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="gamenight15.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <title>What Should We Play?</title>
+</head>
+
+<body>
+    <header>
+        <h1>What To Play ?</h1>
+    </header>
+    <div id="wrapper">
+        <div id="content"></div>
+
+        <div id="sidebar-wrapper">
+            <div class="sidebar" id="players">
+                <label for="playercount">Players:</label><br>
+                <input id="playercount" type="number" default="4" value="4">
+            </div>
+
+            <div class="sidebar" id="votes">
+                <span id="votecount"></span>
+            </div>
+
+            <div class="sidebar" id="functions">
+                <div id="random"> Can't decide?
+                    <div id="randomOutput"><br><br>Click me!</div>
+                </div><br>
+                <hr>
+                <span id="shuffleBtn">Shuffle |</span>
+                <span id="sortBtn">Sort</span>
+            </div>
+            <span id="winner"></span>
+        </div>
+    </div>
+
+    <script src="gamenight15.js"></script>
+</body>
+
+</html>

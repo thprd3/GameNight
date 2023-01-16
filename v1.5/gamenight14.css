@@ -1,0 +1,457 @@
+:root{
+	background: linear-gradient(-45deg, #ee52ee, #6f3ce7, #2ac1f8, #d52349);
+	background-size: 400% 400%;
+    font-family: 'Raleway', sans-serif;
+    box-sizing: border-box;
+    text-align: center;
+    user-select: none;
+}
+:root::-webkit-scrollbar{
+    display: none;
+}
+
+body{
+    animation: fadein 2s;
+}
+
+#wrapper {
+    display: flex;
+}
+
+#content {
+    flex-basis: 80%;
+}
+
+#sidebar-wrapper {
+    flex-basis: 20%;
+}
+
+input{
+    background-color: rgba(0, 0, 0, 0.02);
+    border:none;
+    width:45px;
+    margin-top:20px;
+    font-size:2.5rem;
+    padding:3px;
+    color:#ea00ff;
+    font-weight:600;
+    border-radius: 100%;
+    text-align: center;
+}
+
+hr{
+    border: 1px solid rgba(0, 0, 0, 0.2)
+}
+
+button{
+    background-color: rgba(0, 0, 0, 0);
+    border:none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+h1 {
+    font-size: 1000%;
+    line-height: 25px;
+    animation: color-change 3s infinite;
+}
+
+/* #Content is the wrapper for all the game objects, and all the items are marked with .object. */
+
+#content {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: auto;
+    grid-column-gap: 15px;
+    grid-row-gap: 20px;
+    justify-content: center;
+    max-width:90%;
+}
+
+.object{
+    font-weight: 700;
+    font-size:2rem;
+    width: 410px;
+    height: 190px;
+    margin: auto;
+    cursor: pointer;
+}
+
+.object:hover{
+    animation: wiggle 2s, glowing 2s infinite, fadein 0s; /* fadein 0s prevents fadein from running after wiggle */
+}
+.object:active{
+    animation: pulse 0.5s, fadein 0s; /* fadein 0s prevents fadein from running after wiggle */;
+}
+
+.object text{
+    z-index: 2;
+    position: absolute;
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+/* The following will appear when a game gets voted on */
+.voted {
+    animation: glowing 2s infinite, wiggle 2s infinite;
+
+}
+
+/* Appears when one vote form victory */
+.oneaway{
+    animation: glowing 0.1s infinite, wiggle 0.5s infinite;
+}
+
+#winner p{
+    font-style: italic;
+    color:gold;
+    font-weight:1500;
+    animation: glowing-text 1s infinite, wiggle-text 1s infinite;
+}
+
+#winner:not(:empty){
+    position: fixed;
+    left:0;
+    top:40%;
+    line-height: 10%;
+    width:100%;
+    z-index: 10000;
+    font-size: 5rem;
+    background: linear-gradient(-45deg,#8f6B29, #ffd664, #a8a8a8);
+    animation: glowing-border 0.5s infinite, gradient 2s infinite;
+	background-size: 200% 200%;
+}
+
+                                                /* Sidebars start here */
+
+
+#sidebar-wrapper{
+    background-color: rgba(0, 0, 255, 0.1);
+    width: 140px;
+    height: 100vh;
+    padding: 15px;
+    margin-left: 20px;
+    position: fixed;
+}
+
+.sidebar{
+    padding:15px;
+    position:fixed;
+    font-weight: 700;
+}
+
+#players{
+    color:#ea00ff;
+    text-align: center;
+    font-size:2rem;
+}
+
+#votes{
+    font-size: 2rem;
+    height: 530px;
+}
+
+#votecount{
+    font-size:1.2rem;
+    overflow: hidden;
+}
+
+/* For different colors in #votecount*/
+p:nth-child(1){
+    color:rgb(255, 255, 255);
+}
+p:nth-child(2){
+    color: red;
+}
+p:nth-child(3){
+    color: orange;
+}
+p:nth-child(4){
+    color: yellow;
+}
+p:nth-child(5){
+    color: green;
+}
+p:nth-child(6){
+    color: blue;
+}
+p:nth-child(7){
+    color: rgb(250, 75, 250);
+}
+p:nth-child(8){
+    color: darkviolet;
+}
+p:nth-child(9){
+    color: #000000;
+}
+
+/* Cheap trick to reduce risk of overflow */
+p:nth-child(n+12){ 
+    display:none;
+}
+
+#functions{
+    bottom:-8%;
+    height:240px;
+    font-size: 20px;
+}
+
+#random{
+    font-size: 1.2rem;
+    height:90px;
+    cursor:pointer;
+    color:rgb(72, 197, 255);
+}
+
+#randomOutput {
+    font-size: 1rem;
+    animation: glowing-text 1s infinite;
+}
+
+/* Animations start here */
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes wiggle {
+    0% {-webkit-transform: rotate(0deg);}
+    25% {-webkit-transform: rotate(-5deg);}
+    50% {-webkit-transform: rotate(10deg);}
+    75% {-webkit-transform: rotate(-5deg);}
+    100% {-webkit-transform: rotate(0deg);}
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 15px rgb(255, 0, 191);
+    }
+    50% {
+        box-shadow: 0 0 0 25px rgb(0, 204, 255);
+        z-index:100;
+    }
+    100% {
+        box-shadow: 0 0 0 15px rgb(234, 0, 255);
+    }
+}
+
+@keyframes grow {
+    0% {
+        transform: scale(1.0);
+    }
+    100% {
+        transform: scale(1.25);
+    }
+}
+
+@keyframes color-change {
+    0% { color: #0084ff; text-shadow: 10px 10px #ff00f2;}
+    50% { color: #ff00f2; text-shadow: 10px 10px #0084ff;}
+    100% { color: #0084ff; text-shadow: 10px 10px #ff00f2;}
+  }
+
+@keyframes glowing {
+    0% {
+        box-shadow: 5px 5px 15px 5px #FF8080, 
+        -9px 5px 15px 5px #FFE488, 
+        -7px -5px 15px 5px #8CFF85, 
+        12px -5px 15px 5px #80C7FF, 
+        12px 10px 15px 7px #E488FF, 
+        -10px 10px 15px 7px #FF616B, 
+        -10px -7px 27px 1px #8E5CFF, 
+        -3px 5px 15px 5px rgba(0,0,0,0);
+    }
+
+    50%{
+        box-shadow: 5px 5px 15px 5px #80C7FF, 
+        -9px 5px 15px 5px #FF616B, 
+        -7px -5px 15px 5px #8E5CFF, 
+        12px -5px 15px 5px #FF8080, 
+        12px 10px 15px 7px #FFE488, 
+        -10px 10px 15px 7px #E488FF, 
+        -10px -7px 27px 1px #8CFF85, 
+        -3px 5px 15px 5px rgba(0, 0, 0, 0);
+    }
+ 
+    100% {
+        box-shadow: 5px 5px 15px 5px #FF8080, 
+        -9px 5px 15px 5px #FFE488, 
+        -7px -5px 15px 5px #8CFF85, 
+        12px -5px 15px 5px #80C7FF, 
+        12px 10px 15px 7px #E488FF, 
+        -10px 10px 15px 7px #FF616B, 
+        -10px -7px 27px 1px #8E5CFF, 
+        -3px 5px 15px 5px rgba(0,0,0,0);
+
+    }
+}
+@keyframes glowing-small {
+    0% {
+        box-shadow: 3px 3px 3px 3px #FF8080, 
+        -3px 3px 3px 3px #FFE488, 
+        -3px 3px 3px 3px #8CFF85, 
+        3px -3px 3px 3px #80C7FF, 
+        3px 3px 3px 3px #E488FF, 
+        -3px 3px 3px 3px #FF616B, 
+        -3px -3px 3px 3px #8E5CFF, 
+        -3px 3px 3px 3px rgba(0,0,0,0);
+    }
+
+    50%{
+        box-shadow:
+        3px 3px 3px 3px  #80C7FF, 
+        -3px 3px 3px 3px #FF616B, 
+        -3px 3px 3px 3px #8E5CFF, 
+        3px -3px 3px 3px #FF8080, 
+        3px 3px 3px 3px #FFE488, 
+        -3px 3px 3px 3px #E488FF, 
+        -3px 3px 3px 3px #8CFF85, 
+        -3px 3px 3px 3px rgba(0, 0, 0, 0);
+    }
+ 
+    100% {
+        box-shadow:  
+        3px 3px 3px 3px #FF8080, 
+        -3px 3px 3px 3px #FFE488, 
+        -3px 3px 3px 3px #8CFF85, 
+        3px 3px 3px 3px #80C7FF, 
+        3px 3px 3px 3px #E488FF, 
+        -3px 3px 3px 3px #FF616B, 
+        -3px 3px 3px 3px #8E5CFF, 
+        -3px 3px 4px 4px rgba(0,0,0,0);
+
+    }
+}
+
+@keyframes glowing-border {
+    0% {
+        outline: solid 10px #85e3ff;
+    }
+    33%{
+        outline: solid 10px #1d6cff;
+    }
+    67% {
+        outline: solid 10px #ff3b3b;
+    }
+    100%{
+        outline: solid 10px hsl(295, 100%, 76%);
+    }
+}
+
+@keyframes glowing-border-small {
+    0% {
+        outline: solid 2px #85e3ff;
+    }
+    33%{
+        outline: solid 6px #1d6cff;
+    }
+    67% {
+        outline: solid 6px #ff3b3b;
+    }
+    100%{
+        outline: solid 2px hsl(295, 100%, 51%);
+    }
+}
+
+@keyframes glowing-text {
+    20% {
+        color:#74ecff;
+    }
+
+    40%{
+        color: #2600ff;
+    }
+ 
+    60% {
+        color:#ff00d4;
+    }
+
+    80%{
+        color:#f1bcfc;
+    }
+}
+
+@keyframes wiggle-text {
+    0% {
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.33);
+    }
+ 
+    100%{
+        transform:scale(1);
+    }
+}
+
+.sidebar, #sidebar-wrapper{
+    width: 10%;
+    left: 85%;    
+}
+
+/* Media queries start here. They don't all look perfect, but keep the website functional. */
+
+@media only screen and (max-width: 700px) {
+    h1,.sidebar, #functions {
+        font-size: 10%;
+    }
+    #functions div, #votes, #players{
+        font-size: 100%;
+    }
+    #winner p {
+        font-size: 1.2rem;
+    }
+    .object{
+        width: 300px;
+    }
+    .sidebar, #sidebar-wrapper{
+        width: 15%;
+        background-color: none;    
+    }
+
+}
+
+@media only screen and (min-width: 950px) {
+    #content{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .sidebar, #sidebar-wrapper{
+        width: 10%;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    #content{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .sidebar, #sidebar-wrapper{
+        width: 8%;
+    }    
+}
+
+@media only screen and (min-width: 1700px) {
+    #content{
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .sidebar, #sidebar-wrapper{
+        width: 8%;
+    }    
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>What to play?</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.slim.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!-- AOS, Swiper, FA -->
+</head>
+
+<body onload="generate()">
+    <div id="topMenu" class="menu" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
+        <h1>What to play?</h1>
+        <div id="playersWrapper">
+            <label for="players"><!-- <i class="fa-solid fa-hashtag"></i> --><i class="fa-solid fa-people-group">:</i></label> <!-- Radio buttons? -->
+            <input onchange="assignPlayerNum()" name="players" type="number" id="playerNumInput" placeholder="4" data-aos="fade-down" data-aos-delay="1000" data-aos-once="true">
+        </div>
+        <div id="emptyDiv"></div>
+    </div>
+
+    <div id="mainWrapper">
+
+        <div id="content"></div>
+
+        <div id="rightMenu" class="menu" data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
+            <div id="buttons">
+                <button id="sortBtn" data-aos="flip-up" data-aos-delay="1000" data-aos-once="true"><i class="fa-solid fa-arrow-up-a-z"></i></button>
+                <button id="shuffleBtn" data-aos="flip-up" data-aos-delay="1200" data-aos-once="true"><i class="fa-solid fa-shuffle"></i></button>
+                <button id="randomBtn" data-aos="flip-up" data-aos-delay="1400" data-aos-once="true"><i class="fa-solid fa-dice"></i></button>
+            </div>
+            <div id="randomOutput"></div>
+            <div id="votesWrapper">
+                <div id="votecount"></div>
+            </div>
+            <div id="winner"></div>
+        </div>
+
+    </div>
+
+</body>
+<script>
+    AOS.init();
+</script>
+<script src="games.js"></script>
+<script src="script.js"></script>
+
+</html>

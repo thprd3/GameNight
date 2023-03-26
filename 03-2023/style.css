@@ -1,0 +1,166 @@
+:root {
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+body {
+    margin-top: 0;
+    font-family: sans-serif;
+    color: rgb(207, 207, 207);
+    background-color: rgb(207, 207, 207);}
+
+p {
+    font-size: 1.5rem;
+}
+
+#content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5vw;
+    flex-basis: 90%;
+    margin-right: 1vw; margin-left: 1vw;
+}
+
+.object {
+    width: 20vw;
+    flex-basis: 20%;
+    transition: .1s;
+}
+
+.menu {
+    display: flex;
+    position: sticky;
+    padding: 1vh;
+    align-items: center;
+    z-index: 2;
+}
+
+#rightMenu {
+    margin-top: -2vh;
+    margin-right: -1vw;
+    background-color: rgb(29, 29, 29);
+    height: 100vh;
+    flex-direction: column;
+    flex-basis: 10%;
+    font-size: 2rem;
+    top: 0;
+    word-break: break-word;
+
+}
+
+#topMenu {
+    top: 0;
+    margin-bottom: 2vh;
+    margin-right: -1vw; margin-left: -1vw;
+    width: 110vw;
+    background-color: rgb(29, 29, 29);
+    justify-content: space-between;
+}
+
+#topMenu h1 {
+    flex-grow: 2;
+    margin-left: 2vw;
+}
+
+#topMenu div {
+    flex-grow: 1;
+}
+
+#mainWrapper {
+    display: flex;
+}
+
+.oneFromWin {
+    transform: rotate(0.5turn);
+}
+
+.winner {
+    transform: skew(30deg, 20deg);
+    transition: 1s;
+}
+
+input {
+    height: 100%;
+    width: 3rem;
+}
+
+button {
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid white;
+    font-size: 4rem;
+    width: 7vw;
+    color: white;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+label, input {
+    font-size: 2rem;
+}
+
+h1 {
+    font-style: italic;
+    font-size: 3rem;
+    margin: 0;
+}
+
+@media only screen and (max-width: 1500px) {
+    .object {
+        flex-basis: 32%;
+    }
+    h1, input, label {
+        font-size: 2rem;
+        height: 7vh;
+    }
+
+    #topMenu {
+        height: 8vh;
+    }
+    button {
+        font-size: 4rem;
+        width: 17vw;
+    }
+
+    #rightMenu {
+        flex-basis: 20%;
+    }
+}
+
+@media only screen and (max-width: 988px) {
+    .object {
+        flex-basis: 48%;
+    }
+
+    button {
+        width: 20vw;
+    }
+
+    #rightMenu {
+        flex-basis: 25%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .object {
+        flex-basis: 100%;
+    }
+
+    button {
+        font-size: 4rem;
+        width: 30vw;
+    }
+
+    #rightMenu {
+        flex-basis: 40%;
+        font-size: 1rem;
+        height: 120vh;
+    }
+
+    #votecount > *{
+        margin-bottom: -2vh;
+        font-size: 1rem;
+    }
+}

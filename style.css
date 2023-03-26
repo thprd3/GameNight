@@ -40,13 +40,12 @@ p {
     margin-top: -2vh;
     margin-right: -1vw;
     background-color: rgb(29, 29, 29);
-    height: 100vh;
+    height: 90vh;
     flex-direction: column;
     flex-basis: 10%;
     font-size: 2rem;
-    top: 0;
+    top: 10vh;
     word-break: break-word;
-
 }
 
 #topMenu {
@@ -54,6 +53,7 @@ p {
     margin-bottom: 2vh;
     margin-right: -1vw; margin-left: -1vw;
     width: 110vw;
+    height: 10vh;
     background-color: rgb(29, 29, 29);
     justify-content: space-between;
 }
@@ -69,15 +69,6 @@ p {
 
 #mainWrapper {
     display: flex;
-}
-
-.oneFromWin {
-    transform: rotate(0.5turn);
-}
-
-.winner {
-    transform: skew(30deg, 20deg);
-    transition: 1s;
 }
 
 input {

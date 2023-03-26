@@ -11,14 +11,13 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <!-- AOS, Swiper, FA -->
 </head>
 
 <body onload="generate()">
     <div id="topMenu" class="menu" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
         <h1>What to play?</h1>
         <div id="playersWrapper">
-            <label for="players"><!-- <i class="fa-solid fa-hashtag"></i> --><i class="fa-solid fa-people-group">:</i></label> <!-- Radio buttons? -->
+            <label for="players"><i class="fa-solid fa-people-group">:</i></label> <!-- Radio buttons? -->
             <input onchange="assignPlayerNum()" name="players" type="number" id="playerNumInput" placeholder="4" data-aos="fade-down" data-aos-delay="1000" data-aos-once="true">
         </div>
         <div id="emptyDiv"></div>

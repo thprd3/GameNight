@@ -1,13 +1,14 @@
 :root {
     box-sizing: border-box;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 
 body {
     margin-top: 0;
     font-family: sans-serif;
     color: rgb(255, 255, 255);
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(29, 29, 29);
+
 }
 
 p {
@@ -19,7 +20,8 @@ p {
     flex-wrap: wrap;
     gap: 1.5vw;
     flex-basis: 90%;
-    margin-right: 1vw; margin-left: 1vw;
+    margin-right: 1vw;
+    margin-left: 1vw;
 }
 
 .object {
@@ -30,32 +32,55 @@ p {
 
 .menu {
     display: flex;
-    position: sticky;
+    /* top: 1vh; */
     padding: 1vh;
     align-items: center;
-    z-index: 2;
+    z-index: 1;
+    position: sticky;
+    top: 10vh;
 }
 
 #rightMenu {
-    margin-top: -2vh;
-    margin-right: -1vw;
     background-color: rgb(29, 29, 29);
     height: 90vh;
     flex-direction: column;
-    flex-basis: 10%;
+    flex-basis: 5%;
+    display: flex;
     font-size: 2rem;
-    top: 10vh;
-    word-break: break-word;
+    height: 100vh;
+
+    && button {
+        background-color: rgba(0, 0, 0, 0);
+        border: 1px solid white;
+        margin-right: 1vw;
+        color: white;
+        border-radius: 6%;
+        transition: 0.2s;
+
+    }
+    && button:hover {
+        background-color: white;
+        color: black;
+        cursor: pointer;
+        transition: 0.2s;
+    }
 }
 
 #topMenu {
     top: 0;
     margin-bottom: 2vh;
-    margin-right: -1vw; margin-left: -1vw;
-    width: 110vw;
+    margin-right: -1vw;
+    margin-left: -1vw;
+    width: 97vw;
     height: 10vh;
     background-color: rgb(29, 29, 29);
     justify-content: space-between;
+
+    && input {
+        height: 100%;
+        width: 3rem;
+        background-color: rgb(255, 255, 255);
+    }
 }
 
 #topMenu h1 {
@@ -71,27 +96,10 @@ p {
     display: flex;
 }
 
-input {
-    height: 100%;
-    width: 3rem;
-    background-color: rgb(255, 255, 255);
-}
-
-button {
-    background-color: rgba(0, 0, 0, 0);
-    border: 1px solid white;
-    font-size: 4rem;
-    width: 7vw;
-    color: white;
-}
-
 #buttons {
     display: flex;
     flex-direction: column;
-}
-
-label, input {
-    font-size: 2rem;
+    gap: 2vh;
 }
 
 h1 {
@@ -104,7 +112,10 @@ h1 {
     .object {
         flex-basis: 32%;
     }
-    h1, input, label {
+
+    h1,
+    input,
+    label {
         font-size: 2rem;
         height: 7vh;
     }
@@ -112,6 +123,7 @@ h1 {
     #topMenu {
         height: 8vh;
     }
+
     button {
         font-size: 4rem;
         width: 17vw;
@@ -152,8 +164,72 @@ h1 {
         height: 120vh;
     }
 
-    #votecount > *{
+    #votecount>* {
         margin-bottom: -2vh;
         font-size: 1rem;
     }
+}
+
+#gsmWrapper {
+    transition: 1s;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    background-color: rgb(0, 0, 0);
+    /* Fallback */
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#groupSizeModal {
+    transition: 1s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    width: 33vw;
+    height: 45vh;
+    gap: 10%;
+    border-radius: 6%;
+
+    && button {
+        background-color: rgb(40, 125, 40);
+        border: 1px solid white;
+        font-size: 3rem;
+        color: white;
+        transition: 0.2s;
+    }
+    
+    && button:hover {
+        transition: 0.2s;
+        cursor: pointer;
+        background-color: rgb(62, 196, 62);
+    }
+
+    && input {
+        height: 10%;
+        width: 10%;
+        font-size: 125%;
+        text-align: center;
+        gap: 2%
+    }
+
+    && p {
+        font-size: 200%;
+    }
+}
+
+#gsmError {
+    color: red;
+    transition: 1s;
+}
+
+#playersWrapper {
+    display: none;
 }

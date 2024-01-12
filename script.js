@@ -4,10 +4,37 @@ let votesToWin;
 let oneFromWin;
 let gameOver = false;
 let firstTime = true;
+
+const playerNoEl = document.getElementById("gsmWrapper")
+
+function playerNoModal() {
+    playerNoEl.style.display="flex";
+}
+
+function confirmPlayerNo() {
+    players = document.getElementById("playerCount").value;
+    if (players > 1) {
+        playerNoEl.style.display = "none";
+        console.log("players = " + players)
+        document.body.style.overflow="auto";
+        window.onscroll = function(){}; //enables scrolling
+    } else {
+        let gsmErrorEl = document.getElementById("gsmError");
+        gsmErrorEl.textContent = "Please revise."
+    }
+}
+
 $("#playerNumInput").val("4");
+$("#playerCount").val("4");
+
 
 // Creates all game elements on document load
 function generate() {
+    // disable scroll before modal close    
+    var x = window.scrollX;
+    var y = window.scrollY;
+    window.onscroll = function(){ window.scrollTo(x, y); };
+
     let delayCounter = 0;
     for (let i = 0; i < games.length; i++) {
         let el = document.createElement("img");
@@ -39,6 +66,8 @@ function generate() {
         miscFunctions();
         firstTime = false;
     }
+    // test
+    // document.getElementById("rightMenu").style.position="sticky";
 }
 
 function vote(game) {
@@ -103,8 +132,7 @@ function shuffle(array) {
             ];
         }
         return array;
-    }
-    else {
+    } else {
         return
     }
 }
@@ -141,6 +169,10 @@ function miscFunctions() { //runs in generate(), assings listeners to misc butto
         document.getElementById("content").innerHTML = "";
         games.sort(dynamicSort("name"));
         generate();
+    });
+
+    document.getElementById("playerNoBtn").addEventListener("click", function () {
+        playerNoModal();
     });
 }
 

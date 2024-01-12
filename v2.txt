@@ -1,0 +1,8 @@
+* Fix shuffle logic
+* Add winner modal?
+* Refactor logic!!
+* Improve UX, hint
+* Improve visuals. Multiple themes?
+
+Later
+* Add back-end, add new games from page?

@@ -14,11 +14,21 @@
 </head>
 
 <body onload="generate()">
+    <div id="gsmWrapper">
+        <div id="groupSizeModal" data-aos="zoom-out" data-aos-delay="1000" data-aos-once="true">
+            <p>How many players?</p>
+            <input type="number" name="playerCount" id="playerCount" min="1" placeholder="4" default="4">
+            <button id="confirmPlayerNo" onclick="confirmPlayerNo()">Confirm</button>
+            <p id="gsmError"></p>
+        </div>
+    </div>
+
     <div id="topMenu" class="menu" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
         <h1>What to play?</h1>
         <div id="playersWrapper">
             <label for="players"><i class="fa-solid fa-people-group">:</i></label> <!-- Radio buttons? -->
-            <input onchange="assignPlayerNum()" name="players" type="number" id="playerNumInput" placeholder="4" data-aos="fade-down" data-aos-delay="1000" data-aos-once="true">
+            <input onchange="assignPlayerNum()" name="players" type="number" id="playerNumInput" placeholder="4"
+                data-aos="fade-down" data-aos-delay="1000" data-aos-once="true">
         </div>
         <div id="emptyDiv"></div>
     </div>
@@ -29,9 +39,14 @@
 
         <div id="rightMenu" class="menu" data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
             <div id="buttons">
-                <button id="sortBtn" data-aos="flip-up" data-aos-delay="1000" data-aos-once="true"><i class="fa-solid fa-arrow-up-a-z"></i></button>
-                <button id="shuffleBtn" data-aos="flip-up" data-aos-delay="1200" data-aos-once="true"><i class="fa-solid fa-shuffle"></i></button>
-                <button id="randomBtn" data-aos="flip-up" data-aos-delay="1400" data-aos-once="true"><i class="fa-solid fa-dice"></i></button>
+                <button id="sortBtn" data-aos="flip-up" data-aos-delay="1000" data-aos-once="true"><i
+                        class="fa-solid fa-arrow-up-a-z"></i></button>
+                <button id="shuffleBtn" data-aos="flip-up" data-aos-delay="1200" data-aos-once="true"><i
+                        class="fa-solid fa-shuffle"></i></button>
+                <button id="randomBtn" data-aos="flip-up" data-aos-delay="1400" data-aos-once="true"><i
+                        class="fa-solid fa-dice"></i></button>
+                <button id="playerNoBtn" data-aos="flip-up" data-aos-delay="1400" data-aos-once="true"><i
+                        class="fa-solid fa-list-ol"></i></button>
             </div>
             <div id="randomOutput"></div>
             <div id="votesWrapper">

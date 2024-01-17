@@ -4,37 +4,36 @@ let votesToWin;
 let oneFromWin;
 let gameOver = false;
 let firstTime = true;
-
-const playerNoEl = document.getElementById("gsmWrapper")
-
-function playerNoModal() {
-    playerNoEl.style.display="flex";
-}
+$("#playerCount").val("4");
 
 function confirmPlayerNo() {
-    players = document.getElementById("playerCount").value;
-    if (players > 1) {
-        playerNoEl.style.display = "none";
-        console.log("players = " + players)
-        document.body.style.overflow="auto";
-        window.onscroll = function(){}; //enables scrolling
-    } else {
-        let gsmErrorEl = document.getElementById("gsmError");
-        gsmErrorEl.textContent = "Please revise."
+    if (!gameOver) {
+        players = parseInt(document.getElementById("playerCount").value);
+        if (players > 1) {
+            window.onscroll = function () {}; //enables scrolling
+            document.getElementById("gsmWrapper").style.display = "none";
+            document.body.style.overflow = "auto";
+            votesToWin = Math.ceil(players / 2);
+            oneFromWin = votesToWin - 1;
+            console.log("players: " + players + " to win: " + votesToWin)
+            document.getElementById("players").innerHTML = '<i class="fa-solid fa-people-group"> : </i><span id="playerNumOutput">' + players + "<br>Votes to win: " + votesToWin + "</span>";
+        } else {
+            let gsmErrorEl = document.getElementById("gsmError");
+            gsmErrorEl.textContent = "Please revise."
+        }
     }
 }
 
-$("#playerNumInput").val("4");
-$("#playerCount").val("4");
 
+var x = window.scrollX;
+var y = window.scrollY;
+window.onscroll = function () {
+    window.scrollTo(x, y);
+};
 
 // Creates all game elements on document load
 function generate() {
-    // disable scroll before modal close    
-    var x = window.scrollX;
-    var y = window.scrollY;
-    window.onscroll = function(){ window.scrollTo(x, y); };
-
+    // window.onscroll = function () {}; //enables scrolling
     let delayCounter = 0;
     for (let i = 0; i < games.length; i++) {
         let el = document.createElement("img");
@@ -43,6 +42,7 @@ function generate() {
         el.setAttribute("id", games[i].name);
         el.setAttribute("alt", games[i].name);
         el.setAttribute("data-aos-once", "true");
+        el.style.userSelect = "none";
 
         if (delayCounter < 16 && firstTime) {
             el.setAttribute("data-aos", "fade-down")
@@ -62,7 +62,7 @@ function generate() {
     voteListeners();
 
     if (firstTime) {
-        assignPlayerNum();
+        // assignPlayerNum();
         miscFunctions();
         firstTime = false;
     }
@@ -88,7 +88,8 @@ function vote(game) {
                 document.getElementById(gg.name).classList.add("voted");
             }
         }
-        document.getElementById("votecount").innerHTML = out;
+        document.getElementById("voteCount").innerHTML = out;
+        document.getElementById("voteCount").style.color = "white";
 
         for (let z of games) {
 
@@ -101,7 +102,8 @@ function vote(game) {
                 console.log(gameOver)
                 console.log(z.name + " wins!")
                 document.getElementById(z.name).classList.add("winner");
-                document.getElementById("winner").innerHTML = "<p>Winner: " + z.name + "</p>";
+                document.getElementById("winnerOutput").innerHTML = "<p>Winner: " + z.name + "</p>";
+                document.getElementById("winnerOutput").style.color = "white";
                 for (let j = 0; j < games.length; j++) {
                     document.getElementById(games[j].name).removeEventListener("click", vote);
                 }
@@ -110,14 +112,7 @@ function vote(game) {
     }
 }
 
-function assignPlayerNum() {
-    if (!gameOver) {
-        players = parseInt(document.getElementById("playerNumInput").value);
-        votesToWin = Math.ceil(players / 2);
-        oneFromWin = votesToWin - 1;
-        console.log("players: " + players + " to win: " + votesToWin)
-    }
-}
+
 
 function shuffle(array) {
     if (!gameOver) {

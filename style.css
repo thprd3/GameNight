@@ -6,13 +6,21 @@
 body {
     margin-top: 0;
     font-family: sans-serif;
-    color: rgb(255, 255, 255);
-    background-color: rgb(29, 29, 29);
-
+    color: white;
+    background: rgb(29,29,29);
+    background: linear-gradient(180deg, rgba(29,29,29,1) 0%, rgba(54,32,36,1) 63%);
 }
 
 p {
     font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+#players {
+    text-align: center;
 }
 
 #content {
@@ -36,26 +44,54 @@ p {
     padding: 1vh;
     align-items: center;
     z-index: 1;
-    position: sticky;
-    top: 10vh;
+}
+
+#bottomMenu {
+    background: rgb(255,136,158);
+    background: linear-gradient(180deg, rgba(255,136,158,0) 0%, rgba(29,29,29,1) 46%);
+    width: 99%;
+    height: 40vh;
+    z-index: 1;
+    position: fixed;
+    top: 60%;
+    margin-left: -1vw; padding-right: 1vw;
+    flex-direction: column;
+    justify-content: flex-end;
+    pointer-events: none;
+}
+
+#voteCount {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    color: rgba(29,29,29,1)
+}
+
+#winnerOutput {
+    color: rgba(29,29,29,1)
 }
 
 #rightMenu {
-    background-color: rgb(29, 29, 29);
-    height: 90vh;
+    /* background-color: rgb(54,32,36,1); */
+    border-left: 7px solid rgb(54, 32, 36);
+    border-radius: 1%;
     flex-direction: column;
-    flex-basis: 5%;
+    flex-basis: 10%;
     display: flex;
-    font-size: 2rem;
+    align-items: center;
+    font-size: 4rem;
     height: 100vh;
+    position: sticky;
+    top: 10vh;    
 
     && button {
         background-color: rgba(0, 0, 0, 0);
         border: 1px solid white;
-        margin-right: 1vw;
         color: white;
         border-radius: 6%;
         transition: 0.2s;
+        font-size: 3rem;
+        height: 10vh;
 
     }
     && button:hover {
@@ -64,6 +100,13 @@ p {
         cursor: pointer;
         transition: 0.2s;
     }
+}
+
+#buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    width: 90%;
 }
 
 #topMenu {
@@ -86,6 +129,9 @@ p {
 #topMenu h1 {
     flex-grow: 2;
     margin-left: 2vw;
+    text-decoration: underline;
+    font-size: 3rem;
+    font-style: italic;
 }
 
 #topMenu div {
@@ -94,18 +140,73 @@ p {
 
 #mainWrapper {
     display: flex;
+    margin-bottom: 30vh;
 }
 
-#buttons {
+#gsmWrapper {
+    transition: 1s;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    /* background-color: rgb(0, 0, 0); */
+    /* Fallback */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#groupSizeModal {
+    background-color: rgba(0, 0, 0, 0.899);
+    transition: 1s;
     display: flex;
     flex-direction: column;
-    gap: 2vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 33vw;
+    height: 45vh;
+    gap: 10%;
+    border-radius: 6%;
+    padding: 2vw;
+
+    && button {
+        background-color: rgb(40, 125, 40);
+        border: 1px solid white;
+        font-size: 3rem;
+        color: white;
+        transition: 0.2s;
+        width: 75%;
+    }
+    
+    && button:hover {
+        transition: 0.2s;
+        cursor: pointer;
+        background-color: rgb(62, 196, 62);
+    }
+
+    && input {
+        height: 10%;
+        width: 10%;
+        font-size: 125%;
+        text-align: center;
+        gap: 2%
+    }
+
+    && p {
+        font-size: 200%;
+    }
 }
 
-h1 {
-    font-style: italic;
-    font-size: 3rem;
-    margin: 0;
+#gsmError {
+    color: red;
+    transition: 1s;
+}
+
+#playersWrapper {
+    display: none;
 }
 
 @media only screen and (max-width: 1500px) {
@@ -168,68 +269,4 @@ h1 {
         margin-bottom: -2vh;
         font-size: 1rem;
     }
-}
-
-#gsmWrapper {
-    transition: 1s;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    z-index: 10;
-    left: 0;
-    top: 0;
-    background-color: rgb(0, 0, 0);
-    /* Fallback */
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#groupSizeModal {
-    transition: 1s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
-    width: 33vw;
-    height: 45vh;
-    gap: 10%;
-    border-radius: 6%;
-
-    && button {
-        background-color: rgb(40, 125, 40);
-        border: 1px solid white;
-        font-size: 3rem;
-        color: white;
-        transition: 0.2s;
-    }
-    
-    && button:hover {
-        transition: 0.2s;
-        cursor: pointer;
-        background-color: rgb(62, 196, 62);
-    }
-
-    && input {
-        height: 10%;
-        width: 10%;
-        font-size: 125%;
-        text-align: center;
-        gap: 2%
-    }
-
-    && p {
-        font-size: 200%;
-    }
-}
-
-#gsmError {
-    color: red;
-    transition: 1s;
-}
-
-#playersWrapper {
-    display: none;
 }

@@ -4,14 +4,20 @@ let votesToWin;
 let oneFromWin;
 let gameOver = false;
 let firstTime = true;
-$("#playerCount").val("4");
+$("#playerCount").val("10"); //set default value
 
-function confirmPlayerNo() {
+function confirmPlayerNo(input) {
     if (!gameOver) {
-        players = parseInt(document.getElementById("playerCount").value);
+        if (input) {
+            players = input;
+        } else {
+            players = parseInt(document.getElementById("playerCount").value);
+        }
         if (players > 1) {
             window.onscroll = function () {}; //enables scrolling
+            document.getElementById("fadeWrapper").style.opacity = "1";
             document.getElementById("gsmWrapper").style.display = "none";
+            document.getElementById("gsmWrapper").style.zIndex = "-1";
             document.body.style.overflow = "auto";
             votesToWin = Math.ceil(players / 2);
             oneFromWin = votesToWin - 1;
@@ -24,17 +30,17 @@ function confirmPlayerNo() {
     }
 }
 
-
-var x = window.scrollX;
-var y = window.scrollY;
-window.onscroll = function () {
+let x = window.scrollX;
+let y = window.scrollY;
+window.onscroll = function () { // prevent scroll before player number selected
     window.scrollTo(x, y);
 };
 
-// Creates all game elements on document load
+// Creates all game objects and event listeneres on document load
 function generate() {
-    // window.onscroll = function () {}; //enables scrolling
+    // window.onscroll = function () {}; 
     let delayCounter = 0;
+    let node = document.getElementById("content");
     for (let i = 0; i < games.length; i++) {
         let el = document.createElement("img");
         el.src = games[i].image;
@@ -42,28 +48,27 @@ function generate() {
         el.setAttribute("id", games[i].name);
         el.setAttribute("alt", games[i].name);
         el.setAttribute("data-aos-once", "true");
-        el.style.userSelect = "none";
+        el.style.userSelect = "none"; //not working?
+        el.setAttribute("data-aos-delay", i * 100)
 
-        if (delayCounter < 16 && firstTime) {
+        // makes games appear one by one
+        if (delayCounter < 1 && firstTime) {
             el.setAttribute("data-aos", "fade-down")
-            el.setAttribute("data-aos-delay", i * 100)
             el.setAttribute("data-aos-anchor-placement", "bottom-center")
-            delayCounter++;
         } else {
-            if (delayCounter < 16) {
+            if (delayCounter < 1) { // quick fix for fourth row not triggering + new anim on refresh list
                 el.setAttribute("data-aos", "flip-left")
                 el.setAttribute("data-aos-delay", i * 100)
-                delayCounter++;
             }
         }
-        let node = document.getElementById("content");
+        delayCounter++;
         node.appendChild(el);
     }
     voteListeners();
 
     if (firstTime) {
         // assignPlayerNum();
-        miscFunctions();
+        miscFunctionListeners();
         firstTime = false;
     }
     // test
@@ -79,7 +84,7 @@ function vote(game) {
         });
         gameObj.votes++;
         timesVoted++;
-        console.log("timesVoted: " + timesVoted);
+        // console.log("timesVoted: " + timesVoted);
 
         let out = "";
         for (let gg of games) {
@@ -94,13 +99,13 @@ function vote(game) {
         for (let z of games) {
 
             if (z.votes === oneFromWin) {
-                console.log(z.name + " is one away!")
+                // console.log(z.name + " is one away!")
                 document.getElementById(z.name).classList.add("oneFromWin");
             }
             if (z.votes >= votesToWin) {
                 gameOver = true;
                 console.log(gameOver)
-                console.log(z.name + " wins!")
+                // console.log(z.name + " wins!")
                 document.getElementById(z.name).classList.add("winner");
                 document.getElementById("winnerOutput").innerHTML = "<p>Winner: " + z.name + "</p>";
                 document.getElementById("winnerOutput").style.color = "white";
@@ -111,8 +116,6 @@ function vote(game) {
         }
     }
 }
-
-
 
 function shuffle(array) {
     if (!gameOver) {
@@ -146,26 +149,30 @@ function dynamicSort(property) {
     }
 }
 
-function miscFunctions() { //runs in generate(), assings listeners to misc buttons
+function miscFunctionListeners() { //runs in generate(), assings listeners to misc buttons
+    // random suggestion
     document.getElementById("randomBtn").addEventListener("click", function () {
         if (!gameOver) {
             let game = games[Math.floor(Math.random() * games.length)];
-            document.getElementById("randomOutput").innerHTML = "<br>Let's play <em>" + game.name;
+            document.getElementById("randomOutput").innerHTML = "<br>Let's play <em>" + game.name + "</em>!";
         }
     });
 
+    // shuffle games
     document.getElementById("shuffleBtn").addEventListener("click", function () {
         document.getElementById("content").innerHTML = "";
         shuffle(games);
         generate();
     });
 
+    // sort games alphabetically
     document.getElementById("sortBtn").addEventListener("click", function () {
         document.getElementById("content").innerHTML = "";
         games.sort(dynamicSort("name"));
         generate();
     });
 
+    // change number of players
     document.getElementById("playerNoBtn").addEventListener("click", function () {
         playerNoModal();
     });

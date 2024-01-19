@@ -13,57 +13,79 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
 
+<script>
+    window.addEventListener("load", Aos.refresh);
+</script>
+
 <body onload="generate()">
     <div id="gsmWrapper">
         <div id="groupSizeModal" data-aos="zoom-out" data-aos-delay="1000" data-aos-once="true">
-            <p>How many players?</p>
-            <input type="number" name="playerCount" id="playerCount" min="1" placeholder="4" default="4">
-            <button id="confirmPlayerNo" onclick="confirmPlayerNo()">Confirm</button>
-            <p id="gsmError"></p>
-        </div>
-    </div>
-
-    <div id="topMenu" class="menu" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
-        <h1>What to play?</h1>
-    </div>
-
-    <div id="mainWrapper">
-
-        <div id="content"></div>
-
-        <div id="rightMenu" class="menu" data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
-            <div id="buttons">
-                <button id="sortBtn" data-aos="flip-up" data-aos-delay="1000" data-aos-once="true"><i
-                        class="fa-solid fa-arrow-up-a-z"></i></button>
-                <button id="shuffleBtn" data-aos="flip-up" data-aos-delay="1200" data-aos-once="true"><i
-                        class="fa-solid fa-shuffle"></i></button>
-                <button id="randomBtn" data-aos="flip-up" data-aos-delay="1400" data-aos-once="true"><i
-                        class="fa-solid fa-dice"></i></button>
-                <button id="playerNoBtn" data-aos="flip-up" data-aos-delay="1400" data-aos-once="true"><i
-                        class="fa-solid fa-list-ol"></i></button>
+            <h2>How many players?</h2>
+            <div id="options">
+                <div id="radialButtons">
+                    <button class="menu-item" onclick="confirmPlayerNo(1)">1</button>
+                    <button class="menu-item" onclick="confirmPlayerNo(2)">2</button>
+                    <button class="menu-item" onclick="confirmPlayerNo(3)">3</button>
+                    <button class="menu-item" onclick="confirmPlayerNo(4)">4</button>
+                    <button class="menu-item" onclick="confirmPlayerNo(5)">5</button>
+                    <button class="menu-item" onclick="confirmPlayerNo(6)">6</button>
+                    <button class="menu-item" onclick="confirmPlayerNo(7)">7</button>
+                    <button class="menu-item" onclick="confirmPlayerNo(8)">8</button>
+                    <button class="menu-item" onclick="confirmPlayerNo(9)">9</button>
+                </div>
+                <div id="numberInput">
+                    <input type="number" name="playerCount" id="playerCount" min="1" placeholder="10+">
+                    <button id="confirmBtn" onclick="confirmPlayerNo()">Confirm</button>
+                </div>
             </div>
-            <div id="randomOutput"></div>
-            <div id="votesWrapper">
-                <div id="votecount"></div>
+            <!-- <p id="gsmError"></p> -->
+        </div>
+    </div>
+    <div id="fadeWrapper">
+
+
+        <div id="topMenu" class="menu" data-aos="fade-right" data-aos-duration="1000" data-aos-once="true">
+            <h1>What to play?</h1>
+        </div>
+
+        <div id="mainWrapper">
+
+            <div id="content"></div>
+
+            <div id="rightMenu" class="menu" data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
+                <div id="buttons">
+                    <button id="sortBtn" data-aos="flip-up" data-aos-delay="1000" data-aos-once="true"><i
+                            class="fa-solid fa-arrow-up-a-z"></i></button>
+                    <button id="shuffleBtn" data-aos="flip-up" data-aos-delay="1200" data-aos-once="true"><i
+                            class="fa-solid fa-shuffle"></i></button>
+                    <button id="randomBtn" data-aos="flip-up" data-aos-delay="1400" data-aos-once="true"><i
+                            class="fa-solid fa-dice"></i></button>
+                    <button id="playerNoBtn" data-aos="flip-up" data-aos-delay="1400" data-aos-once="true"><i
+                            class="fa-solid fa-list-ol"></i></button>
+                </div>
+                <div id="randomOutput"></div>
+                <div id="votesWrapper">
+                    <div id="votecount"></div>
+                </div>
+                <div id="winner"></div>
             </div>
-            <div id="winner"></div>
+
+        </div>
+
+        <div id="bottomMenu" class="menu">
+            <h2>Votes</h2>
+            <div id="players">
+
+            </div>
+            <div id="voteCount">
+                <p>dummy</p>
+            </div>
+            <div id="winnerOutput">
+                <p>dummy</p>
+            </div>
         </div>
 
     </div>
-
-    <div id="bottomMenu" class="menu">
-        <h2>Votes</h2>
-        <div id="players">
-            
-        </div>
-        <div id="voteCount">
-            <p>dummy</p>
-        </div>
-        <div id="winnerOutput">
-            <p>dummy</p>
-        </div>
-    </div>
-
 </body>
 <script>
     AOS.init();
